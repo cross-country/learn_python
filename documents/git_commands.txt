@@ -1,0 +1,11 @@
+git init		взять директорию под контроль git
+git add			добавить измененные файлы
+git commit		создать новую версию файлов
+git status		статус файлов в git
+git branch		показать ветки репозитория
+git clone		копировать репозиторий
+git config
+git config --list
+git config --global user.name ""
+git config --global user.email ""
+
