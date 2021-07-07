@@ -8,4 +8,8 @@ git config
 git config --list
 git config --global user.name ""
 git config --global user.email ""
+git checkout		переход между ветками
+git merge		добавить состояние файлов в другую ветку
+git log			показывает историю версий файлов
+git push		выгрузить на сервер
 
