@@ -18,3 +18,4 @@ git pull <repository_name> <branch>		скачать версию с удален
 
 first try
 second try
+third try
