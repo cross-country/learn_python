@@ -17,3 +17,4 @@ git remote add <repository_name> <url>		привязать к удаленном
 git pull <repository_name> <branch>		скачать версию с удаленного репозитория
 
 first try
+second try
