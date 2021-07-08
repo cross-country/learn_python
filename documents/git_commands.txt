@@ -15,7 +15,5 @@ git push origin <repository_name> 		выгрузить на сервер
 
 git remote add <repository_name> <url>		привязать к удаленному репозиторию
 git pull <repository_name> <branch>		скачать версию с удаленного репозитория
-
-first try
-second try
-third try
+git clean -i					cleans untracked files (-i means interactive)
+git revert					
