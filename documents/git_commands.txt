@@ -17,5 +17,3 @@ git remote add <repository_name> <url>		привязать к удаленном
 git pull <repository_name> <branch>		скачать версию с удаленного репозитория
 git clean -i					cleans untracked files (-i means interactive)
 git revert					
-
-abracadabra!!!!!!!!!!!!!!!!!!!!!!!!!!!
