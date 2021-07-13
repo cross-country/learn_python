@@ -1,13 +1,15 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import os
-
+import shutil
+from tkinter import messagebox as mb
 
 window = tk.Tk()
 window.geometry('650x350')
 window.resizable(False, False)
 window.title('Sort It Now')
 window.configure(background='#bcc6cc')
+
 
 def return_extension():
     ext_str = ent_ext.get()
@@ -19,10 +21,34 @@ def return_extension():
             continue
     return ext2_str.split(';')
 
-def sort_files(event):
-    directory = ent_dir
+def sort_files(path):
+    directory = path
     ext_list = return_extension()
+    list_dir = os.listdir(directory)
+    name = directory + os.sep + os.path.basename(directory) + '_' + ent_pattern.get()
     if os.path.exists(directory):
+        if os.path.exists(name):
+            name = name + "333"
+            new_directory = os.mkdir(name)
+        else:
+            new_directory = os.mkdir(name)
+
+        for k in list_dir:
+            extension = os.path.splitext(k)
+            path = '{}{}{}'.format(directory, os.sep, k)
+            if os.path.isfile(path):
+                for i in ext_list:
+                    if r'{}{}'.format(os.extsep, i) == extension[1]:
+                        shutil.copy(path, new_directory)
+                        os.remove(path)
+    else:
+        mb.showerror('Ошибка!', 'Не могу найти указанный путь!')
+
+
+def check_folders():
+    my_path = ent_dir.get()
+
+
 
 
 
