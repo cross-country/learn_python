@@ -10,7 +10,7 @@ window.resizable(False, False)
 window.title('Sort It Now')
 window.configure(background='#bcc6cc')
 
-
+# функция считывает расширения из поля ввода и возвращает их в виде списка
 def return_extension():
     ext_str = ent_ext.get()
     ext2_str = ''
@@ -21,6 +21,13 @@ def return_extension():
             continue
     return ext2_str.split(';')
 
+
+"""
+ Аргумент функции это полный путь директории. Его определяет ф-ия start_sorting(event). 
+ Создает новую директорию(имя: <родительская папка_поле ввода>).
+ Проходится по всем элементам папки, если это файл и  расширение файла
+ соответствует вводу пользователя, перемещает такой файл в новую директорию.
+"""
 def one_folder_sort(path):
     directory = path
     ext_list = return_extension()
@@ -39,13 +46,17 @@ def one_folder_sort(path):
                 extension = os.path.splitext(k)
                 for i in ext_list:
                     if r'{}{}'.format(os.extsep, i) == extension[1]:
-                        shutil.copy(my_path, name)
+                        shutil.copy2(my_path, name)
                         os.remove(my_path)
+        ent_dir.delete(0, len(ent_dir.get()) + 1)
+        window.geometry('650x350+300+300')
     else:
         mb.showerror('Ошибка!', 'Не могу найти указанный путь!')
 
 
 
+# Функция такая же как one_folder_sort(path), плюс: если имеется вложенная директория,
+# запускает себя же. Аргументом является полный путь этой директории.
 def subfolders_sort(path):
     directory = path
     ext_list = return_extension()
@@ -64,10 +75,12 @@ def subfolders_sort(path):
                 extension = os.path.splitext(k)
                 for i in ext_list:
                     if r'{}{}'.format(os.extsep, i) == extension[1]:
-                        shutil.copy(my_path, name)
+                        shutil.copy2(my_path, name)
                         os.remove(my_path)
             elif os.path.isdir(my_path):
                 subfolders_sort(my_path)
+        ent_dir.delete(0, len(ent_dir.get()) + 1)
+        window.geometry('650x350+300+300')
     else:
         mb.showerror('Ошибка!', 'Не могу найти указанный путь!')
 
