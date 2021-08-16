@@ -10,7 +10,7 @@ window.resizable(False, False)
 window.title('Sort It Now')
 window.configure(background='#bcc6cc')
 
-
+# функция считывает расширения из поля ввода и возвращает их в виде списка
 def return_extension():
     ext_str = ent_ext.get()
     ext2_str = ''
@@ -21,38 +21,78 @@ def return_extension():
             continue
     return ext2_str.split(';')
 
-def sort_files(path):
+
+"""
+ Аргумент функции это полный путь директории. Его определяет ф-ия start_sorting(event). 
+ Создает новую директорию(имя: <родительская папка_поле ввода>).
+ Проходится по всем элементам папки, если это файл и  расширение файла
+ соответствует вводу пользователя, перемещает такой файл в новую директорию.
+"""
+def one_folder_sort(path):
     directory = path
     ext_list = return_extension()
-    list_dir = os.listdir(directory)
     name = directory + os.sep + os.path.basename(directory) + '_' + ent_pattern.get()
     if os.path.exists(directory):
+        list_dir = os.listdir(directory)
         if os.path.exists(name):
             name = name + "333"
-            new_directory = os.mkdir(name)
+            os.mkdir(name)
         else:
-            new_directory = os.mkdir(name)
+            os.mkdir(name)
 
         for k in list_dir:
-            extension = os.path.splitext(k)
-            path = '{}{}{}'.format(directory, os.sep, k)
-            if os.path.isfile(path):
+            my_path = '{}{}{}'.format(directory, os.sep, k)
+            if os.path.isfile(my_path):
+                extension = os.path.splitext(k)
                 for i in ext_list:
                     if r'{}{}'.format(os.extsep, i) == extension[1]:
-                        shutil.copy(path, new_directory)
-                        os.remove(path)
+                        shutil.copy2(my_path, name)
+                        os.remove(my_path)
+        ent_dir.delete(0, len(ent_dir.get()) + 1)
+        window.geometry('650x350+300+300')
     else:
         mb.showerror('Ошибка!', 'Не могу найти указанный путь!')
 
 
-def check_folders():
-    my_path = ent_dir.get()
+
+# Функция такая же как one_folder_sort(path), плюс: если имеется вложенная директория,
+# запускает себя же. Аргументом является полный путь этой директории.
+def subfolders_sort(path):
+    directory = path
+    ext_list = return_extension()
+    name = directory + os.sep + os.path.basename(directory) + '_' + ent_pattern.get()
+    if os.path.exists(directory):
+        list_dir = os.listdir(directory)
+        if os.path.exists(name):
+            name = name + "333"
+            os.mkdir(name)
+        else:
+            os.mkdir(name)
+
+        for k in list_dir:
+            my_path = '{}{}{}'.format(directory, os.sep, k)
+            if os.path.isfile(my_path):
+                extension = os.path.splitext(k)
+                for i in ext_list:
+                    if r'{}{}'.format(os.extsep, i) == extension[1]:
+                        shutil.copy2(my_path, name)
+                        os.remove(my_path)
+            elif os.path.isdir(my_path):
+                subfolders_sort(my_path)
+        ent_dir.delete(0, len(ent_dir.get()) + 1)
+        window.geometry('650x350+300+300')
+    else:
+        mb.showerror('Ошибка!', 'Не могу найти указанный путь!')
 
 
 
-
-
-
+def start_sorting(event):
+    if check_var.get() == False:
+        one_folder_sort(ent_dir.get())
+    elif check_var.get() == True:
+        subfolders_sort(ent_dir.get())
+    else:
+        print('Something is wrong with checkbutton!')
 
 
 
@@ -72,6 +112,7 @@ lab3 = ttk.Label(window, text='Имя папки будет состоять и�
 lab4 = ttk.Label(window, text=' "названия текущего каталога"   и ')
 ent_pattern = ttk.Entry(window, justify='center')
 btn_sort = ttk.Button(window, text='Сортировать')
+btn_sort.bind('<Button-1>', start_sorting)
 
 lab_main.place(relx=0, rely=0, relwidth=1)
 lab1.place(relx=0.02, rely=0.2)
