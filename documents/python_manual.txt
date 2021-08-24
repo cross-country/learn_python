@@ -25,3 +25,10 @@ __repr__()			работает по аналогии с __str__(); обарачи
 __sub__()			вычитание
 __mul__()			умножение
 __truediv__()		деление
+
+			Создание пакетов:
+# в файле __init__.py
+__all__ = ['file1', 'file2']
+from .file1 import *
+from ..file2 import *
+from . import file1, file2
