@@ -26,4 +26,4 @@ a = Cylinder(2, 2)
 a.h = 5
 a.getErea()
 
-#print(a.make_area(2, 2))
+print(a.make_area(2, 2))
