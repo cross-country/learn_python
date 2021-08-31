@@ -1,0 +1,58 @@
+.open <filename.db>								-открывает файл(если его нет, то создает)
+.databases										-показывает текущий(активный) файл
+CREATE TABLE people( name TEXT, age INTEGER, phone INTEGER, profession TEXT);
+
+sqlite> CREATE TABLE people(
+   ...> name TEXT,
+   ...> age INTEGER,
+   ...> phone INTEGER,
+   ...> profession TEXT);
+
+DROP TABLE <tablename>							-удалить таблицу
+_id INTEGER PRIMARY KEY AUTOINCREMENT			-создание столбца с проверкой уникальности(PRIMARY KEY), 
+												и автозаполнением(AUTOINCREMENT)
+NOT NULL										-запрещает оставлять поле пустым
+DEFAULT	<value>									-если поле не заполнено, вставляется значение поумолчанию
+.schema <tablename>								-комманда показывает схемму таблицы
+PRAGMA TABLE_INFO(<tablename>)					-комманда показывает схемму таблицы
+PRAGMA foreign_keys = ON						-комманда, которая включает поддержку внешних ключей
+FOREIGN KEY (<columnname>) REFERENCES <tablename>(_id) -  назначает внешний ключ для столбца (<имя столбца>)
+
+INSERT INTO <table_name> 						-синтаксис создания записей в таблице
+(<column_name1>, <column_name2>, ...)
+VALUES 
+(<value1>, <value2>, …);						
+
+SELECT * FROM <table_name>;						-ЧТЕНИЕ *(всего содержимого) ИЗ таблицы
+SELECT <column_name> FROM <table_name>;			-ЧТЕНИЕ столбца ИЗ таблицы
+.mode											-выводит формат отображения таблицы
+.help .mode										-выводит возможные форматы отображения таблицы
+.header on(off)									-отображает заголовки столбцов
+WHERE											-условие используется с SELECT, UPDATE, DELETE
+(= или ==, >, <, >=, <=, !=, BETWEEN)			-операторы
+(AND, OR, NOT, IN, NOT IN)						-операторы
+
+ORDER BY										-оператор сортировки по возрастанию или убыванию
+ORDER BY <column_name> ASC(DESC)
+ASC												-от большего к меньшему
+DESC											-от меньшего к большему
+
+UPDATE <table_name> SET <column_name> = <new_value>	-синтаксис изменения данных в таблице
+WHERE <condition>
+
+DELETE FROM <table_name> WHERE <condition>		-удаление записи из таблицы
+
+count()											-ф-ция подсчета строк
+SELECT count() FROM <table_name>
+DISTINCT										комманда обозначает различия между данными
+SELECT count(DISTINCT <column_name>) <table_name>	
+max(<column_name>) 								-ф-ция подсчета максимального значения
+min()
+sum()											-ф-ция суммирования значений
+avg()											-ф-ция подсчета среднего значения
+GROUP BY										-комманда группирует строки по одинаковым значениям
+SELECT <column_name> FROM <table_name> GROUP BY <column_name>
+SELECT <column_name>, count() FROM <table_name> GROUP BY <column_name>
+
+AS												- ключевое слово, назначает другое имя(столбца) в выводе
+
