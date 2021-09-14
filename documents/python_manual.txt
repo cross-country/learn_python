@@ -33,3 +33,18 @@ from .file1 import *
 from ..file2 import *
 from .folder import *
 from . import file1, file2
+
+			SQLite:
+import sqlite3
+connect()							-ф-я создает объект класса Connection
+Connection.cursor()					-создает объект класса Сursor
+Cursor.execute()					-с помощью этого метода задаются SQL-комманды
+Cursor.executemany()
+Cursor.executescript() 				-в аргументе передается скрипт на языке SQL
+Cursor.fetchone()					-извлекает данные из объекта по одной строке
+Cursor.fetchmany()					--извлекает данные из объекта	...
+Cursor.fetchall()					--извлекает данные из объекта	...
+Cursor.__next__()					-извлекает данные из объекта по одной строке
+Connection.commit()					-
+Connection.close()					-
+Connection.rollback()				-

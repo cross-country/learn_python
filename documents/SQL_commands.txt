@@ -56,3 +56,31 @@ SELECT <column_name>, count() FROM <table_name> GROUP BY <column_name>
 
 AS												- ключевое слово, назначает другое имя(столбца) в выводе
 
+<table_name> JOIN <table_name> ON <condition>	-группировка таблиц
+HAVING											-работает как WHERE, но можно использовать после группировки
+UNION											-в отличии от JOIN объединяет таблицы по вертикали
+
+LIKE ''											-оператор после которого пишется шаблон в кавычках
+%												-заменяет неопределенное количество символов
+_												-заменяет один символ
+
+CREATE VIEW <name> AS							-создание виртуальной таблицы
+DROP VIEW <name>								-удаление виртуальной таблицы
+LIMIT <5>										-ограничивает количество выводимых строк
+LIMIT <3> OFFSET <6>							-ограничивает вывод до 3 строк со сдвигом 6
+LIMIT <6>, <3>									-ограничивает вывод до 3 строк со сдвигом 6
+
+IS NULL
+IS NOT NULL
+SELECT TOP <number>								-SQL Server/ MS Access
+(LIMIT <number> )								-MySQL
+(ROWNUM <number> )								-Oracle
+(FETCH FIRST  <= <number> ROWS ONLY)			-Oracle
+IN(condition1, condition2)
+BETWEEN <> AND <>
+NOT BETWEEN
+CONCAT(column1, "," column2) AS <name> 			-объединить поля в одно поле
+(INNER) JOIN
+LEFT JOIN
+RIGHT JOIN
+OUTER JOIN
