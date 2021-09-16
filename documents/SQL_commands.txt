@@ -57,7 +57,7 @@ SELECT <column_name>, count() FROM <table_name> GROUP BY <column_name>
 AS												- ключевое слово, назначает другое имя(столбца) в выводе
 
 <table_name> JOIN <table_name> ON <condition>	-группировка таблиц
-HAVING											-работает как WHERE, но можно использовать после группировки
+HAVING											-работает как WHERE, но используется только после GROUP BY
 UNION											-в отличии от JOIN объединяет таблицы по вертикали
 
 LIKE ''											-оператор после которого пишется шаблон в кавычках
@@ -84,3 +84,4 @@ CONCAT(column1, "," column2) AS <name> 			-объединить поля в од
 LEFT JOIN
 RIGHT JOIN
 OUTER JOIN
+EXISTS											-оператор ипользуется в запросе в отношении подзапроса
