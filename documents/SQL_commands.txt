@@ -84,4 +84,17 @@ CONCAT(column1, "," column2) AS <name> 			-объединить поля в од
 LEFT JOIN
 RIGHT JOIN
 OUTER JOIN
-EXISTS											-оператор ипользуется в запросе в отношении подзапроса
+EXISTS											-оператор ипользуется в запросе в отношении подзапроса(возвращает TRUE(FALSE))
+
+ANY, ALL										-используется с подзапросами, возвращает TRUE(FALSE)
+SELECT INTO										-copies data from one table into a new table
+SELECT <column_name> INTO <new_table> FROM <old_table>
+SELECT <column_name> INTO <new_table>  IN <external.db> FROM <old_table>
+
+
+
+
+
+
+
+
