@@ -40,12 +40,12 @@ DROP PRIMARY KEY															-удалить первичный ключ
 
 
 FOREIGN KEY																	-внешний ключ, устанавливает связь между таблицами
-FOREIGN KEY <column_name> REFERENCES <table_name>(<column_name>)
+FOREIGN KEY (<column_name>) REFERENCES <table_name>(<column_name>)
 CONSTRAINT <constraint_name> FOREIGN KEY (<column_name>) REFERENCES <table_name>(<column_name>)
 DROP FOREIGN KEY															-удалить внешний ключ
 
 
-,...CHECK(condition)														-
+,...CHECK(condition)														-используется при создании таблицы. Ограничивает добавляемые значения.
 ADD CHECK(column1_condition AND column2_condition)							-
 ADD CONSTRAINT <constraint_name> CHECK(condition)							-
 DROP CHECK																	-
@@ -63,7 +63,23 @@ CREATE VIEW <view_name> AS													-создание виртуальной 
 CREATE OR REPLACE VIEW <view_name> AS										-изменение виртуальной таблицы
 DROP VIEW <view_name>														-удалить
 
-
-
-
 UPDATE ... SET ...															-внести изменения в таблицу
+
+INSERT INTO table2 SELECT * FROM table1 WHERE condition
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END
+
+IFNULL()																	-функция, принимает 2 аргумента: столбец и значение, 
+																			которое возвращается вместо NULL
+COALESCE()																	-функция идентичная IFNULL()
+-- <text>																	-однострочный комментарий
+/* <text>  */																-многострочный комментарий
+
+
+
+
