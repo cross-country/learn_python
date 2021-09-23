@@ -1,0 +1,44 @@
+<h1>
+<p>
+<a href=>
+<img src=; alt=>												-нулевой(empty tag)
+<br>															-нулевой; перевод на новую строку(line break)
+<html lang=>
+style='color:red'												-attr
+style='color(font, size, font-family, font-size, text-align
+		border, ...)
+title='hover_text'												-attr; tooltip
+
+<hr>															-нулевой; горизонтальный разделитель(линия)
+<pre>															-сохраняет текст как напечатано в теге(preformatted text)
+
+<b> - Bold text
+<strong> - Important text
+<i> - Italic text
+<em> - Emphasized text
+<mark> - Marked text
+<small> - Smaller text
+<del> - Deleted text
+<ins> - Inserted text
+<sub> - Subscript text
+<sup> - Superscript text
+
+<blockquote cite=>												-тег для цитат(quotation)
+<q>																-короткие цитаты
+<abbr title=>													-тег для аббревиатур
+<address>														-tag for contact information
+<cite>															-tag for names of creative works(names of films, poemc etec.)
+<bdo dir='rtl'>													-tag changes direction of a text(rtl-right-to left)
+
+<!--comments are written inside -->								-нулевой
+<!--comments are written 
+		inside -->
+
+			COLORS:
+				rgb(255, 99, 71)
+				rgba(255, 99, 71, 0.5)
+				hex #ff6347
+				hsl(9, 100%, 64%)
+				hsla(9, 100%, 64%, 0.5)
+				HSL:	hue, saturation, lightness
+

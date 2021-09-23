@@ -5,6 +5,10 @@ sudo mysql_secure_installation												-конфигурация безопа
 mysql -u <имя_пользователя> -p												-подключение к mysql
 /var/lib/mysql																-директория где хранятся базы данных
 
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'new_user'@'localhost';
+FLUSH PRIVILEGES;
+
 
 CREATE DATABASE																-
 SHOW DATABASES																-
