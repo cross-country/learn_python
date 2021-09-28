@@ -1,46 +1,47 @@
-ps ax				processes
-jobs				список фоновых задач
-&				задача в фоноомй режиме
-kill %2				прекращает фоновую задачу №2
-Ctrl-R				search in previous commands
+ps ax								-processes
+jobs								-список фоновых задач
+&									-задача в фоноомй режиме
+kill %2								-прекращает фоновую задачу №2
+Ctrl-R								-search in previous commands
 Ctrl-D
-Ctrl-C				SIGINT
-Ctrl-\				SIGQUIT
-kill				SIGTERM
-kill -9				SIGKILL
-Ctrl-S				pause output
-Ctrl-Q				continue output
-Ctrl-Z				pause current process
-bg				starts paused process in background
-fg				starts paused process in foreground
+Ctrl-C								-SIGINT
+Ctrl-\								-SIGQUIT
+kill								-SIGTERM
+kill -9								-SIGKILL
+Ctrl-S								-pause output
+Ctrl-Q								-continue output
+Ctrl-Z								-pause current process
+bg									-starts paused process in background
+fg									-starts paused process in foreground
 history
-less				prints on a separate page
+less								-prints on a separate page
 ls -lF
 ls -lR
-Ctrl+U				clears a row
-Ctrl+W				clears a word
->(>>)				перенаправление вывода
-<(<<)				перенаправление ввода
-wc file.txt			считает кол-во строк, слов и символов (в файле)
+Ctrl+U								-clears a row
+Ctrl+W								-clears a word
+>(>>)								-перенаправление вывода
+<(<<)								-перенаправление ввода
+wc file.txt							-считает кол-во строк, слов и символов (в файле)
 man 'command'
 info 'command'
 'command' --help
-apropos 'str'			комманда поиска подходящей комманды
-man -k 'str'			комманда поиска подходящей комманды
-touch				создать файл
-cp				копировать папку или файл
-mv				переименовать или переместить папку или файл
-rm				удалить файл
-mkdir				создать папку
-rmdir				удалить папку
-ls -i				просмотреть индексный дескриптор
-ln				создать жесткую ссылку
-ln -s				создать мягкую ссылку
-chmod				изменение прав доступа
-sudo -s				работа с правами администратора
+apropos 'str'						-комманда поиска подходящей комманды
+man -k 'str'						-комманда поиска подходящей комманды
+touch								-создать файл
+cp									-копировать папку или файл
+mv									-переименовать или переместить папку или файл
+rm									-удалить файл
+mkdir								-создать папку
+rmdir								-удалить папку
+ls -i								-просмотреть индексный дескриптор
+ln									-создать жесткую ссылку
+ln -s								-создать мягкую ссылку
+chmod								-изменение прав доступа
+sudo -s								-работа с правами администратора
 
-tree				отображает поддиректории в виде дерева
-alias.<short> <command>		назначает свою(короткую) комманду для комманды Bash
+tree								-отображает поддиректории в виде дерева
+alias.<short> <command>				-назначает свою(короткую) комманду для комманды Bash
 
 find -name
-
+dpkg -i name.db						-установить локальный пакет с помощью менеджера dpkg
+apt install ./name.db				-установить локальный пакет с помощью менеджера apt

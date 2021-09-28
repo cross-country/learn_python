@@ -1,7 +1,26 @@
+							HEAD:
+<style>															-CSS
+<link rel=; href=>												-
+
+
+
+							BODY:
+
 <h1>
 <p>
-<a href=>
-<img src=; alt=>												-нулевой(empty tag)
+<a href=; target=>
+	target=	'self'												-the same window(default)
+			'blank'												-new window or tab
+			'parent'											-opens in the parent frame
+			'top'												-opens in the full body of the window
+	href='mailto:name@domain'
+	
+
+<img src=; alt=; usemap="#name">												-нулевой(empty tag)
+	style='float:left(right)'									-расположение картинки относительно текста
+<map name=><area shape=; coords=; href=; alt=>
+
+	
 <br>															-нулевой; перевод на новую строку(line break)
 <html lang=>
 style='color:red'												-attr
@@ -29,10 +48,13 @@ title='hover_text'												-attr; tooltip
 <address>														-tag for contact information
 <cite>															-tag for names of creative works(names of films, poemc etec.)
 <bdo dir='rtl'>													-tag changes direction of a text(rtl-right-to left)
-
+вер. 26, 2021, 22:19:55
 <!--comments are written inside -->								-нулевой
 <!--comments are written 
 		inside -->
+
+<picture>														-дает больше(чем <img>) возможностей в отображении фотографий. Может включать в себя <img>
+	<source media='()' srcset=>									-ссылается на кртинку
 
 			COLORS:
 				rgb(255, 99, 71)
@@ -42,3 +64,17 @@ title='hover_text'												-attr; tooltip
 				hsla(9, 100%, 64%, 0.5)
 				HSL:	hue, saturation, lightness
 
+						STYLE:
+a:link {}
+a:hover {}
+a:visited {}
+a:active {}
+
+{
+background-image: url('name');
+background-repeat: no-repeat;
+background-size: cover;											-фон картинки занимает весь элемент
+background-size: 100% 100%;										-растягивает, что-бы заполнить элемент
+background-attachment: fixed;									-картинка сохраняет изначальные пропорции
+
+}
