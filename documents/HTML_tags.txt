@@ -99,6 +99,23 @@ tr:hover(td:hover) {color:red}
 <col span= style='width'('visibility', 'background', 'border')>	-нулевой. Создает и описывает группу.
 (style)visibility: collapse										-скрывает элемент
 
+
+<ul><li>
+<ul>															-неупорядоченный список(unordered list)
+<ol>															-упорядоченный список(ordered list)
+<ol type='1'(A, a, I, i) start='50'>
+<ul style='list-style-type:disk(circle, square, none)'>
+<li>															-элемент списка(list)
+<dl> <dt></dt> <dd></dd>
+<dl>															-список значение : описание
+<dt>															-значение(term)
+<dd>															-описание(description)
+
+(attr)class														-подключает тег к определенному классу или классам(если его нет, то создает) . Тег наследует все свойства класса
+class='city town village megapolis' 
+
+
+
 									STYLE:
 a:link {}
 a:hover {}
