@@ -1,6 +1,13 @@
 									HEAD:
-<style>															-CSS
-<link rel=; href=>												-
+<title>															-текст вкладки окна
+<style>															-CSS текущей страницы
+<script>														-javascript текущей страницы
+<link rel=; href=>												-ссылка на файлы(CSS, javascript, ...)
+<meta>															-нулевой. Информация об авторе, кодировке, 
+<meta charset= (name= content=) (http-equiv= content=)
+	name='viewport' content='width:device-width, initial-scale=1.0'
+<base href= target=>											-базовый URL
+
 
 
 
@@ -114,6 +121,34 @@ tr:hover(td:hover) {color:red}
 (attr)class														-подключает тег к определенному классу или классам(если его нет, то создает) . Тег наследует все свойства класса
 class='city town village megapolis' 
 
+<iframe src= name= height= width= title=>
+<iframe>														-вложенное окно
+<a target='iframe_name'>
+
+<kbd>											-тег для записи ввода клавиатуры
+<samp>											-для записи вывода програмных сообщений
+<code>											-для записи програмного кода(можно комбинировать с <pre>)
+<var>											-для записи переменных
+
+
+<article>										-для независимого самостоятельного контента
+<aside>											-дополлнительный контент, косвенно касающийся основной темы
+<details>										-для дополнительных элементов, которые пользователь может скрыть или посмотреть
+<summary>										-используют внутри <details>
+<figcaption>									-для текста внутри <figure>
+<figure>										-иллюстрации, диаграммы, фото, примеры кода ...
+
+<footer>										-
+<header>										-контент заголовка
+<main>											-основное содержание страницы
+<mark>											-для выделенного текста
+<nav>											-для навигации
+<section>										-общие секции для разного контента
+<time>											-для даты и времени
+
+
+
+
 
 
 									STYLE:
@@ -125,9 +160,9 @@ a:active {}
 {
 background-image: url('name');
 background-repeat: no-repeat;
-background-size: cover;											-фон картинки занимает весь элемент
-background-size: 100% 100%;										-растягивает, что-бы заполнить элемент
-background-attachment: fixed;									-картинка сохраняет изначальные пропорции
+background-size: cover;							-фон картинки занимает весь элемент
+background-size: 100% 100%;						-растягивает, что-бы заполнить элемент
+background-attachment: fixed;					-картинка сохраняет изначальные пропорции
 border-radius:~px;
 border-style:dotted
 text-align:left
