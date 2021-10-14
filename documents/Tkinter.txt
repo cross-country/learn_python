@@ -1,7 +1,9 @@
-			Tkinter
 
-			Classes
-Tk()
+							CLASSES
+						
+Tk():
+	Tk.update()
+	
 Entry()
 	.get()
 	.insert(0, 'text')
@@ -39,3 +41,22 @@ Scrollbar()
 bind(<modifier-type-detail>)
 event.char		возвращает символ нажатой клавиши
 
+
+Canvas():
+	Canvas(width=, height, bg=)
+	Canvas.create_line(widh, fill, arrow, dash,
+		 				activefill, arrowshape)
+	Canvas.create_rectangle(fill, outline, activedash,
+							width)
+	Canvas.create_oval()
+	Canvas.create_polygon()
+	Canvas.create_text (text, justify, font, anchor,
+						fill)
+	Canvas.create_arc (start, extent, style=ARC(CHORD),
+						fill, outline, width)
+	Canvas.delete()
+	Canvas.item_config()
+	Canvas.coords(obj)							-возвращает координаты объекта
+	Canvas.move()
+	Canvas.focus_set()
+	Canvas.tag_bind()
