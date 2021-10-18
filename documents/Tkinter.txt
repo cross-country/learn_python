@@ -1,18 +1,21 @@
 
 							CLASSES
 						
-Tk():
+tkinter.Tk():
 	Tk.update()
+	Tk.update_idletasks()
+	Tk.title('')
+	Tk.wm_attributes('-topmost')								-объект, определяющий свойства окна
 	
-Entry()
+tkinter.Entry()
 	.get()
 	.insert(0, 'text')
 	.delete(0, END)
 	justify
-Label()
+tkinter.Label()
 	font
 	bd 		- граница(px)
-Button()
+tkinter.Button()
 	text
 	command
 	bg
@@ -33,18 +36,20 @@ Button()
 	.grid()
 	.place()
 
-Text()
+tkinter.Text()
 	.window_create()
-Scrollbar()
+tkinter.Scrollbar()
 
 					Event
 bind(<modifier-type-detail>)
 event.char		возвращает символ нажатой клавиши
 
 
+tkinter.PhotoImage(file='path')							-объект картинка
+
 Canvas():
 	Canvas(width=, height, bg=)
-	Canvas.create_line(widh, fill, arrow, dash,
+	Canvas.create_line(width, fill, arrow, dash,
 		 				activefill, arrowshape)
 	Canvas.create_rectangle(fill, outline, activedash,
 							width)
@@ -54,9 +59,11 @@ Canvas():
 						fill)
 	Canvas.create_arc (start, extent, style=ARC(CHORD),
 						fill, outline, width)
+	Canvas.create_image(anchor=, image=)
 	Canvas.delete()
 	Canvas.item_config()
-	Canvas.coords(obj)							-возвращает координаты объекта
+	Canvas.coords(obj)									-возвращает координаты объекта
 	Canvas.move()
 	Canvas.focus_set()
 	Canvas.tag_bind()
+	Canvas.bind_all()
