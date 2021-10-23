@@ -1,0 +1,171 @@
+									HEAD:
+<title>															-текст вкладки окна
+<style>															-CSS текущей страницы
+<script>														-javascript текущей страницы
+<link rel=; href=>												-ссылка на файлы(CSS, javascript, ...)
+<meta>															-нулевой. Информация об авторе, кодировке, 
+<meta charset= (name= content=) (http-equiv= content=)
+	name='viewport' content='width:device-width, initial-scale=1.0'
+<base href= target=>											-базовый URL
+
+
+
+
+									BODY:
+
+<h1>
+<p>
+<a href=; target=>
+	target=	'self'												-the same window(default)
+			'blank'												-new window or tab
+			'parent'											-opens in the parent frame
+			'top'												-opens in the full body of the window
+	href='mailto:name@domain'
+	
+
+<img src=; alt=; usemap="#name">								-нулевой(empty tag)
+	style='float:left(right)'									-расположение картинки относительно текста
+<map name=><area shape=; coords=; href=; alt=>
+
+	
+<br>															-нулевой; перевод на новую строку(line break)
+<html lang=>
+style='color:red'												-attr
+style='color(font, size, font-family, font-size, text-align
+		border, ...)
+title='hover_text'												-attr; tooltip
+
+<hr>															-нулевой; горизонтальный разделитель(линия)
+<pre>															-сохраняет текст как напечатано в теге(preformatted text)
+
+<b> - Bold text
+<strong> - Important text
+<i> - Italic text
+<em> - Emphasized text
+<mark> - Marked text
+<small> - Smaller text
+<del> - Deleted text
+<ins> - Inserted text
+<sub> - Subscript text
+<sup> - Superscript text
+
+<blockquote cite=>												-тег для цитат(quotation)
+<q>																-короткие цитаты
+<abbr title=>													-тег для аббревиатур
+<address>														-tag for contact information
+<cite>															-tag for names of creative works(names of films, poemc etec.)
+<bdo dir='rtl'>													-tag changes direction of a text(rtl-right-to left)
+вер. 26, 2021, 22:19:55
+<!--comments are written inside -->								-нулевой
+<!--comments are written 
+		inside -->
+
+<picture>														-дает больше(чем <img>) возможностей в отображении фотографий. Может включать в себя <img>
+	<source media='()' srcset=>									-ссылается на кртинку
+
+			COLORS:
+				rgb(255, 99, 71)
+				rgba(255, 99, 71, 0.5)
+				hex #ff6347
+				hsl(9, 100%, 64%)
+				hsla(9, 100%, 64%, 0.5)
+				HSL:	hue, saturation, lightness
+				
+											TABLES:
+				
+
+<table><caption><tr><th>													-таблица
+		<tr><td>
+
+<tr>															-table row
+<th>															-table head
+<td>															-table data(defines 1 cell)
+(style) border-collapse:collapse								-поддерживает <table>. Объединить границы
+(style)	border-radius:~px										-скругленные границы ячеек
+(style)width:~%													-Ширина и высота столбцов задается в процентах по отношению ко всей таблице
+(style)height:~%												-Ширина и высота таблицы соотносится с окном страницы
+(attr)colspan='2'												-объеденяет эту и следующую (правую) ячейки
+(attr)rowspan='2'												-объеденяет эту и следующую (нижнюю) ячейки
+<caption>														-добавляет заголовок к таблице. Используется сразу после <table>
+(style)padding:10px
+(style)padding-top(bottom, left, right)
+(style)border-spacing:30px										-используется для тега  <table>. Задает расстояние между границами
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+tr:nth-child(even)												-селектор, означает каждую вторую строку(начиная с 1)
+tr:nth-child(odd)												-селектор, означает каждую вторую строку(начиная с 0)
+
+td:nth-child(even)												-селектор, означает каждый второй столбец(начиная с 1)
+td:nth-child(odd)												-селектор, означает каждый второй столбец(начиная с 0)
+tr:hover(td:hover) {color:red}
+
+<table><colgroup><col span='4' style='background-color:red'>				
+<colgroup>														-тег ипользуется для настройки стиля для групп столбцов
+<col span= style='width'('visibility', 'background', 'border')>	-нулевой. Создает и описывает группу.
+(style)visibility: collapse										-скрывает элемент
+
+
+<ul><li>
+<ul>															-неупорядоченный список(unordered list)
+<ol>															-упорядоченный список(ordered list)
+<ol type='1'(A, a, I, i) start='50'>
+<ul style='list-style-type:disk(circle, square, none)'>
+<li>															-элемент списка(list)
+<dl> <dt></dt> <dd></dd>
+<dl>															-список значение : описание
+<dt>															-значение(term)
+<dd>															-описание(description)
+
+(attr)class														-подключает тег к определенному классу или классам(если его нет, то создает) . Тег наследует все свойства класса
+class='city town village megapolis' 
+
+<iframe src= name= height= width= title=>
+<iframe>														-вложенное окно
+<a target='iframe_name'>
+
+<kbd>											-тег для записи ввода клавиатуры
+<samp>											-для записи вывода програмных сообщений
+<code>											-для записи програмного кода(можно комбинировать с <pre>)
+<var>											-для записи переменных
+
+
+<article>										-для независимого самостоятельного контента
+<aside>											-дополлнительный контент, косвенно касающийся основной темы
+<details>										-для дополнительных элементов, которые пользователь может скрыть или посмотреть
+<summary>										-используют внутри <details>
+<figcaption>									-для текста внутри <figure>
+<figure>										-иллюстрации, диаграммы, фото, примеры кода ...
+
+<footer>										-
+<header>										-контент заголовка
+<main>											-основное содержание страницы
+<mark>											-для выделенного текста
+<nav>											-для навигации
+<section>										-общие секции для разного контента
+<time>											-для даты и времени
+
+
+
+
+
+
+									STYLE:
+a:link {}
+a:hover {}
+a:visited {}
+a:active {}
+
+{
+background-image: url('name');
+background-repeat: no-repeat;
+background-size: cover;							-фон картинки занимает весь элемент
+background-size: 100% 100%;						-растягивает, что-бы заполнить элемент
+background-attachment: fixed;					-картинка сохраняет изначальные пропорции
+border-radius:~px;
+border-style:dotted
+text-align:left
+
+
+}

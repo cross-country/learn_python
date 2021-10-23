@@ -1,0 +1,100 @@
+.open <filename.db>								-открывает файл(если его нет, то создает)
+.databases										-показывает текущий(активный) файл
+CREATE TABLE people( name TEXT, age INTEGER, phone INTEGER, profession TEXT);
+
+sqlite> CREATE TABLE people(
+   ...> name TEXT,
+   ...> age INTEGER,
+   ...> phone INTEGER,
+   ...> profession TEXT);
+
+DROP TABLE <tablename>							-удалить таблицу
+_id INTEGER PRIMARY KEY AUTOINCREMENT			-создание столбца с проверкой уникальности(PRIMARY KEY), 
+												и автозаполнением(AUTOINCREMENT)
+NOT NULL										-запрещает оставлять поле пустым
+DEFAULT	<value>									-если поле не заполнено, вставляется значение поумолчанию
+.schema <tablename>								-комманда показывает схемму таблицы
+PRAGMA TABLE_INFO(<tablename>)					-комманда показывает схемму таблицы
+PRAGMA foreign_keys = ON						-комманда, которая включает поддержку внешних ключей
+FOREIGN KEY (<columnname>) REFERENCES <tablename>(_id) -  назначает внешний ключ для столбца (<имя столбца>)
+
+INSERT INTO <table_name> 						-синтаксис создания записей в таблице
+(<column_name1>, <column_name2>, ...)
+VALUES 
+(<value1>, <value2>, …);						
+
+SELECT * FROM <table_name>;						-ЧТЕНИЕ *(всего содержимого) ИЗ таблицы
+SELECT <column_name> FROM <table_name>;			-ЧТЕНИЕ столбца ИЗ таблицы
+.mode											-выводит формат отображения таблицы
+.help .mode										-выводит возможные форматы отображения таблицы
+.header on(off)									-отображает заголовки столбцов
+WHERE											-условие используется с SELECT, UPDATE, DELETE
+(= или ==, >, <, >=, <=, !=, BETWEEN)			-операторы
+(AND, OR, NOT, IN, NOT IN)						-операторы
+
+ORDER BY										-оператор сортировки по возрастанию или убыванию
+ORDER BY <column_name> ASC(DESC)
+ASC												-от большего к меньшему
+DESC											-от меньшего к большему
+
+UPDATE <table_name> SET <column_name> = <new_value>	-синтаксис изменения данных в таблице
+WHERE <condition>
+
+DELETE FROM <table_name> WHERE <condition>		-удаление записи из таблицы
+
+count()											-ф-ция подсчета строк
+SELECT count() FROM <table_name>
+DISTINCT										комманда обозначает различия между данными
+SELECT count(DISTINCT <column_name>) <table_name>	
+max(<column_name>) 								-ф-ция подсчета максимального значения
+min()
+sum()											-ф-ция суммирования значений
+avg()											-ф-ция подсчета среднего значения
+GROUP BY										-комманда группирует строки по одинаковым значениям
+SELECT <column_name> FROM <table_name> GROUP BY <column_name>
+SELECT <column_name>, count() FROM <table_name> GROUP BY <column_name>
+
+AS												- ключевое слово, назначает другое имя(столбца) в выводе
+
+<table_name> JOIN <table_name> ON <condition>	-группировка таблиц
+HAVING											-работает как WHERE, но используется только после GROUP BY
+UNION											-в отличии от JOIN объединяет таблицы по вертикали
+
+LIKE ''											-оператор после которого пишется шаблон в кавычках
+%												-заменяет неопределенное количество символов
+_												-заменяет один символ
+
+CREATE VIEW <name> AS							-создание виртуальной таблицы
+DROP VIEW <name>								-удаление виртуальной таблицы
+LIMIT <5>										-ограничивает количество выводимых строк
+LIMIT <3> OFFSET <6>							-ограничивает вывод до 3 строк со сдвигом 6
+LIMIT <6>, <3>									-ограничивает вывод до 3 строк со сдвигом 6
+
+IS NULL
+IS NOT NULL
+SELECT TOP <number>								-SQL Server/ MS Access
+(LIMIT <number> )								-MySQL
+(ROWNUM <number> )								-Oracle
+(FETCH FIRST  <= <number> ROWS ONLY)			-Oracle
+IN(condition1, condition2)
+BETWEEN <> AND <>
+NOT BETWEEN
+CONCAT(column1, "," column2) AS <name> 			-объединить поля в одно поле
+(INNER) JOIN
+LEFT JOIN
+RIGHT JOIN
+OUTER JOIN
+EXISTS											-оператор ипользуется в запросе в отношении подзапроса(возвращает TRUE(FALSE))
+
+ANY, ALL										-используется с подзапросами, возвращает TRUE(FALSE)
+SELECT INTO										-copies data from one table into a new table
+SELECT <column_name> INTO <new_table> FROM <old_table>
+SELECT <column_name> INTO <new_table>  IN <external.db> FROM <old_table>
+
+
+
+
+
+
+
+

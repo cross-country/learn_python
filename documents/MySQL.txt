@@ -1,0 +1,89 @@
+sudo apt-get install mysql-server											-установка
+sudo service mysql start													-запуск mysql
+sudo service mysql status													-проверка состояния mysql
+sudo mysql_secure_installation												-конфигурация безопасности										-
+mysql -u <имя_пользователя> -p												-подключение к mysql
+/var/lib/mysql																-директория где хранятся базы данных
+
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'new_user'@'localhost';
+FLUSH PRIVILEGES;
+
+
+CREATE DATABASE																-
+SHOW DATABASES																-
+DROP DATABASE																-
+use <database_name>															-выбрать(открыть) базу данных
+BACKUP DATABASE																-
+BACKUP DATABASE <name> TO DISK <'path'> WITH DIFFERENTIAL
+
+CREATE TABLE																-создать таблицу
+DROP TABLE																	-удаляет таблицу
+TRUNCATE TABLE																-удаляет все данные из таблицы
+ALTER TABLE																	-изменяет таблицу
+ALTER TABLE <name> ADD <column_name>										-
+ALTER TABLE <name> DROP COLUMN <column_name>								-
+ALTER TABLE <name> ALTER COLUMN <column_name>								-изменяет только тип данных(старая)
+ALTER TABLE <name> MODIFY (COLUMN) <column_name>							-изменяет только тип данных(новая)
+MODIFY ..., MODIFY ..., MODIFY ...	
+Constraints:																ОГРАНИЧЕНИЯ:
+			NOT NULL														-ограничение по уникальности названия
+			UNIQUE															-можно использовать для нескольких столбцов
+			PRIMARY KEY														-можно использовать только для одного столбца
+			FOREIGN KEY														-
+			CHECK															-
+			DEFAULT															-
+			CREATE INDEX													-
+..., UNIQUE (<column_name1>, <column_name2>);								-создает проверку на уникальность значений каждого столбца
+..., CONSTRAINT <constraint_name> UNIQUE(<name1>, <name2>);					-создает проверку на уникальность перечня значений в группе столбцов(задает имя ограничения).
+ADD UNIQUE(<column_name>)													-
+DROP INDEX <constraint_name>												-удалить ограничение по имени ограничения
+ADD PRIMARY KEY(<column_name>)												-добавить ключ
+ADD CONSTRAINT <constraint_name> PRIMARY KEY(<column_name1>, <column_name2>)
+DROP PRIMARY KEY															-удалить первичный ключ
+
+
+FOREIGN KEY																	-внешний ключ, устанавливает связь между таблицами
+FOREIGN KEY (<column_name>) REFERENCES <table_name>(<column_name>)
+CONSTRAINT <constraint_name> FOREIGN KEY (<column_name>) REFERENCES <table_name>(<column_name>)
+DROP FOREIGN KEY															-удалить внешний ключ
+
+
+,...CHECK(condition)														-используется при создании таблицы. Ограничивает добавляемые значения.
+ADD CHECK(column1_condition AND column2_condition)							-
+ADD CONSTRAINT <constraint_name> CHECK(condition)							-
+DROP CHECK																	-
+
+DEFAULT GETDATE()															-значение по умолчанию - это ф-ия получения даты.
+ALTER TABLE <table_name> ALTER <column_name> SET DEFAULT 'value'
+ALTER TABLE <table_name> ALTER <column_name> DROP DEFAULT
+
+CREATE INDEX <index_name> ON <table_name> (column1, column2, ...)
+CREATE UNIQUE INDEX <index_name> ON <table_name> (column1, column2, ...)
+ALTER TABLE <table_name> DROP INDEX <index_name>
+
+AUTO_INCREMENT																-
+CREATE VIEW <view_name> AS													-создание виртуальной таблицы															-
+CREATE OR REPLACE VIEW <view_name> AS										-изменение виртуальной таблицы
+DROP VIEW <view_name>														-удалить
+
+UPDATE ... SET ...															-внести изменения в таблицу
+
+INSERT INTO table2 SELECT * FROM table1 WHERE condition
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END
+
+IFNULL()																	-функция, принимает 2 аргумента: столбец и значение, 
+																			которое возвращается вместо NULL
+COALESCE()																	-функция идентичная IFNULL()
+-- <text>																	-однострочный комментарий
+/* <text>  */																-многострочный комментарий
+
+
+
+

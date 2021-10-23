@@ -1,0 +1,36 @@
+git init					взять директорию под контроль git
+git add						добавить измененные файлы
+git add -p					-p позволяет выбрать какие изменения комитить, а какие нет
+git commit					создать новую версию файлов
+git commit --all(-a)				позволяет закомитить без git add
+git status					статус файлов в git
+git branch					показать ветки репозитория
+git clone					копировать репозиторий
+git config
+git config --list
+git config --global user.name ""		(--local, --system)
+git config --global user.email ""
+git branch <name>				создание новой ветки
+git checkout <name>				переход между ветками
+git merge					добавить состояние файлов в другую ветку
+git log						показывает историю версий файлов
+git push origin <repository_name> 		выгрузить на сервер
+git remote add <repository_name> <url>		привязать к удаленному репозиторию
+git pull <repository_name> <branch>		скачать версию с удаленного репозитория
+git clean -i					cleans untracked files (-i means interactive)
+git revert HEAD --no--edit			отменяет последний commit
+tree						комманда Bash, отображает директории в виде дерева
+git show					показывает информацию
+git reset					
+git rm						удаляет файлы
+git rm -r					улаляет директории
+git rm --cached					удаляет только из индекса git
+git mv <oldfile> <newfile>			переименование файла
+git stash					изымает незакомиченые изменения файлов, и хранит отдельно
+git stash pop					возвращает сделанные изменения обратно (можно применить для другой ветки)
+
+git config --global core.excludesFile ~/.gitignore	создание файла .gitignore глобально; записываем в него те папки и файлы, 
+							которые git должен игнорировать
+gcc -o <name.c> <name>				компиляция файла с указанием имени скомпилированного файла
+make <name> == gcc -o <name.c> <name>		
+
