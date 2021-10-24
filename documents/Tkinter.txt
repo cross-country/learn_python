@@ -61,7 +61,7 @@ Canvas():
 						fill, outline, width)
 	Canvas.create_image(anchor=, image=)
 	Canvas.delete()
-	Canvas.item_config()
+	Canvas.itemconfig()
 	Canvas.coords(obj)									-возвращает координаты объекта
 	Canvas.move()
 	Canvas.focus_set()
