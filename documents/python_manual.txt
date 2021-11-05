@@ -119,9 +119,9 @@ keyword:
 	keyword.iskeyword('')
 	keyword.kwlist
 random:
-	random.randint()
-	random.range()
-	random.random()
+	random.randint()							-принимает 2 аргумента(оба включительно)
+	random.range()								-принимает 1, 2 или 3 аргумента(второй не включается), третий обозначает шаг
+	random.random()								-не принимает аргументов, возвращает число от 0 до 1
 	random.choice(list, tuple, str)				-возвращает один элемент в случайном порядке
 	random.shuffle(list)						-изменяет порядок элементов случайным образом и возвращает измененный список
 
