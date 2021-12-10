@@ -16,6 +16,7 @@ git merge							добавить состояние файлов в другую
 git log								показывает историю версий файлов
 git push origin <repository_url> <branch>		выгрузить на сервер
 git remote add <name(origin)> <url>				привязать к удаленному репозиторию
+git remote -v						показать наличие соединения с удаленным репозиторием
 git pull <repository_name> <branch>				скачать версию с удаленного репозитория
 git clean -i									cleans untracked files (-i means interactive)
 git revert HEAD --no--edit						отменяет последний commit
