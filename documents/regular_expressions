@@ -1,0 +1,19 @@
+\		-Escape character.
+.		-Matches any single character.
+^		-Beginning of a string.
+$		-End of a string.
+|		-A vertical bar is a Boolean "or". It separates alternatives. For 					example, "gray|grey" matches both "gray" and "grey".
+?		-Matches zero or one occurrence of the preceding element.
+*		-Matches zero or more occurrences of the preceding element.
++		-Matches one or more occurrences of the preceding element.
+
+(…)		-Used for grouping to define the scope and precedence of other 					operators. For example, "gray|grey" and "gr(a|e)y" are 						equivalent patterns.
+[…]		-Matches a single character contained within brackets. It is not 				needed to escape characters listed in brackets even if it is a 			special character. For example, "[*+]" would match "*" or "+".
+[X-Y]	-Matches any character between X and Y. For example, [a-z] matches 			any lowercase letter of the English alphabet, [0-9] matches 				any digit.
+[^…]	-Matches a single character not contained within brackets.
+{n}		-Matches exactly n occurrences of the preceding element.
+{min, max}	-Matches the preceding element at least min times and not more 				than max times.
+
+\w		-Alphanumeric characters and underscore
+\s		-Whitespace characters
+\d		-Digits
