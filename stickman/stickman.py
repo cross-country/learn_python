@@ -21,7 +21,7 @@ class Game:
             for y in range(0, 5):
                 if x % 2 == 0:
                     self.canvas.create_image(x * w, y * 2 * h - 100, \
-                                         image=self.bg, anchor='nw')
+                                             image=self.bg, anchor='nw')
                 else:
                     self.canvas.create_image(x * w, y * 2 * h, \
                                              image=self.bg, anchor='nw')
@@ -36,7 +36,6 @@ class Game:
             self.tk.update_idletasks()
             self.tk.update()
             time.sleep(0.01)
-
 
 class Coords:
     def __init__(self, x1=0, y1=0, x2=0, y2=0):
@@ -83,12 +82,20 @@ def collieded_bottom(y, co1, co2):
         if y_calc >= co2.y1 and y_calc <= co2.y2:
             return True
     return False
+def on_platform(y, co1, co2):
+    if within_x(co1, co2):
+        y_calc = co1.y2 + y
+        if y_calc >= co2.y1 and y_calc <= co2.y2:
+            return True
+    return False
 
 class Sprite:
     def __init__(self, game):
         self.game = game
         self.endgame = False
         self.coordinates = None
+        self.x = 0
+        self.y = 0
     def move(self):
         pass
     def coords(self):
@@ -99,9 +106,35 @@ class PlatformSprite(Sprite):
         Sprite.__init__(self, game)
         self.photo_image = photo_image
         self.image = game.canvas.create_image(x, y, \
-                        image=self.photo_image, anchor='nw')
+                                              image=self.photo_image, anchor='nw')
+        self.platform_speed = random.randint(3, 7) / 10
+        self.x = self.random_value()
+        self.y = 0
+        self.width = width
+        self.height = height
         self.coordinates = Coords(x, y, x + width, y + height)
-
+    def random_value(self):
+        x = random.randint(0, 1)
+        if x:
+            self.x = self.platform_speed
+        else:
+            self.x = -self.platform_speed
+        return self.x
+    def coords(self):
+        xy = self.game.canvas.coords(self.image)
+        self.coordinates.x1 = xy[0]
+        self.coordinates.y1 = xy[1]
+        self.coordinates.x2 = xy[0] + self.width
+        self.coordinates.y2 = xy[1] + self.height
+        return self.coordinates
+    def move(self):
+        if self.coordinates.x1 <= 0:
+            self.x = self.platform_speed
+        elif self.coordinates.x2 >= self.game.canvas_width:
+            self.x = -self.platform_speed
+        self.game.canvas.move(self.image, self.x, self.y)
+        self.coords()
+        return self.x
 class StickFigureSprite(Sprite):
     def __init__(self, game):
         Sprite.__init__(self, game)
@@ -117,8 +150,10 @@ class StickFigureSprite(Sprite):
         ]
         self.image = game.canvas.create_image(200, 470, \
                         image=self.images_left[0], anchor='nw')
-        self.x = -2
+        self.x = 0
         self.y = 0
+        self.other_x = 0
+        self.movement = False
         self.current_image = 0
         self.current_image_add = 1
         self.jump_count = 0
@@ -127,19 +162,30 @@ class StickFigureSprite(Sprite):
         game.canvas.bind_all('<KeyPress-Left>', self.turn_left)
         game.canvas.bind_all('<KeyPress-Right>', self.turn_right)
         game.canvas.bind_all('<space>', self.jump)
+        game.canvas.bind_all('<KeyRelease-Left>', self.stop)
+        game.canvas.bind_all('<KeyRelease-Right>', self.stop)
     def turn_left(self, evt):
+        self.movement = True
+        self.other_x = 0
         if self.y == 0:
-            self.x = -2
+            self.x -=2
     def turn_right(self, evt):
+        self.movement = True
+        self.other_x = 0
         if self.y == 0:
-            self.x = 2
+            self.x +=2
     def jump(self, evt):
+        #self.movement = True
         if self.y == 0:
             self.y = -4
             self.jump_count = 0
+    def stop(self, evt):
+        self.game.canvas.itemconfig(self.image, image=self.images_left[0])
+        self.movement = False
+        self.x = self.other_x
     def animate(self):
         if self.x != 0 and self.y == 0:
-            if time.time() - self.last_time > 0.1:
+            if time.time() - self.last_time > 0.07:
                 self.last_time = time.time()
                 self.current_image += self.current_image_add
                 if self.current_image >= 2:
@@ -170,7 +216,8 @@ class StickFigureSprite(Sprite):
         return self.coordinates
 
     def move(self):
-        self.animate()
+        if self.movement:
+            self.animate()
         if self.y < 0:
             self.jump_count += 1
             if self.jump_count > 20:
@@ -199,18 +246,61 @@ class StickFigureSprite(Sprite):
             if sprite == self:
                 continue
             sprite_co = sprite.coords()
+            if on_platform(1, co, sprite_co) and not self.movement:
+                self.other_x = sprite.x
+                self.x = self.other_x
             if top and self.y < 0 and collieded_top(co, sprite_co):
                 self.y = -self.y
                 top = False
             if bottom and self.y > 0 and collieded_bottom(self.y, \
-                                        co, sprite_co):
+                                                          co, sprite_co):
                 self.y = sprite_co.y1 - co.y2
                 if self.y < 0:
                     self.y = 0
                 bottom = False
                 top = False
-
-
+            if bottom and falling and self.y == 0 and co.y2 < self.game.canvas_height \
+                    and collieded_bottom(1, co, sprite_co):
+                falling = False
+            if left and collieded_left(co, sprite_co):
+                self.other_x = sprite.x
+                self.x = sprite.x
+                left = False
+                if sprite.endgame:
+                    sprite.open()
+                    self.game.tk.update()
+                    time.sleep(0.5)
+                    sprite.close()
+                    self.game.canvas.itemconfig(self.image, state='hidden')
+                    self.game.canvas.create_text(200, 70, fill='red', text='You won!', font='Verdana 30')
+                    self.game.running = False
+            if right and collieded_right(co, sprite_co):
+                self.other_x = sprite.x
+                self.x = sprite.x
+                right = False
+                if sprite.endgame:
+                    sprite.open()
+                    self.game.tk.update()
+                    time.sleep(0.5)
+                    sprite.close()
+                    self.game.canvas.itemconfig(self.image, state='hidden')
+                    self.canvas.create_text(200, 70, fill='red', text='You won!', font='Verdana 30')
+                    self.game.running = False
+        if falling and bottom and self.y == 0 and co.y2 < self.game.canvas_height:
+            self.y = 4
+        self.game.canvas.move(self.image, self.x, self.y)
+class DoorSprite(Sprite):
+    def __init__(self, game, photo_image1, photo_image2, x, y, width, height):
+        Sprite.__init__(self, game)
+        self.photo_image_1 = photo_image1
+        self.photo_image_2 = photo_image2
+        self.image = game.canvas.create_image(x, y, image=self.photo_image_1, anchor='nw')
+        self.coordinates = Coords(x, y, x + (width / 2), y + height)
+        self.endgame = True
+    def open(self):
+        self.game.canvas.itemconfig(self.image, image=self.photo_image_2)
+    def close(self):
+        self.game.canvas.itemconfig(self.image, image=self.photo_image_1)
 
 
 
@@ -246,4 +336,8 @@ g.sprites.append(platform7)
 g.sprites.append(platform8)
 g.sprites.append(platform9)
 g.sprites.append(platform10)
+door = DoorSprite(g, PhotoImage(file='door1.gif'), PhotoImage(file='door2.gif'), 45, 30, 40, 35)
+g.sprites.append(door)
+sf = StickFigureSprite(g)
+g.sprites.append(sf)
 g.mainloop()
