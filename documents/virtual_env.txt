@@ -1,0 +1,11 @@
+virtualenv name			створити віртуальне середовище
+source name/bin/activate	активувати віртуальне середовище
+deactivate			вийти з віртуального середовища
+rm -rf name			видалити віртуальне середовище
+pip freeze > name.txt		зберегти встановлені модулі pip в файлі
+pip install -r name.txt		встановити модулі pip з файлу
+
+python3 -m venv name		створити віртуальне середовище
+python3 -m venv name --system-site-packages 	доступ до глобальних модулів
+
+python3 -m pip install Django	Встановити Django

@@ -1,0 +1,7 @@
+i		insert mode
+Esc		command mode
+:w		save
+:q		quit
+:wq		save and quit
+:q!		quit without saving
+

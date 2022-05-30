@@ -1,0 +1,4 @@
+django-admin --version			версія djalngo
+django-admin startproject <name>	створити новий проект django
+python3 manage.py runserver		
+python3 manage.py startapp <app_name> 	створити новий додаток
