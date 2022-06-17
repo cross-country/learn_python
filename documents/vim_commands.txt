@@ -4,4 +4,9 @@ Esc		command mode
 :q		quit
 :wq		save and quit
 :q!		quit without saving
+y		copy string
+p		paste string
+d		delete string
+v		enter visual mode
+Ctrl+v		enter visual block mode
 
