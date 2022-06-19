@@ -1,4 +1,7 @@
-django-admin --version			версія djalngo
+python3 -m pip install Django	Встановити Django
+pip install Django				Встановити Django
+
+django-admin --version			версія django
 django-admin startproject <name>	створити новий проект django
 python3 manage.py runserver		
-python3 manage.py startapp <app_name> 	створити новий додаток
+python3 manage.py startapp <app_name> 	створити новий додаток  
