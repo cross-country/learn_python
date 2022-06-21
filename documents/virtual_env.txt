@@ -7,4 +7,4 @@ deactivate			вийти з віртуального середовища
 
 python3 -m venv name		створити віртуальне середовище(python venv)
 python3 -m venv name --system-site-packages 	доступ до глобальних модулів
-python3 -m pip install Django	Встановити Django
+
