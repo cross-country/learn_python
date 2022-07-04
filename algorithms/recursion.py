@@ -41,7 +41,6 @@ print(biggest_num(my_list))
 new_list = []
 for i in range(1, 91):
     new_list.append(i)
-
 def binary_search(lists, item):
     low = 0
     high = len(lists) - 1
@@ -56,3 +55,23 @@ def binary_search(lists, item):
         return lists[guess]
     return binary_search(lists[low: high + 1], item)
 print(binary_search(new_list, 656))
+
+    #Array quick sort using recursion
+my_list = [4, 7, 9, 2, 5, 3]
+def quick_sort(alist):
+    low_list = []
+    high_list = []
+    if len(alist) < 2:
+        return alist
+    elif len(alist) == 2:
+        if alist[0] > alist[1]:
+            alist[0], alist[1] = alist[1], alist[0]
+        return alist
+    base_element = alist[len(alist) - 1]
+    for i in alist[:-1]:
+        if i < base_element:
+            low_list.append(i)
+        else:
+            high_list.append(i)
+    return quick_sort(low_list) + [base_element] + quick_sort(high_list)
+print(quick_sort(my_list))
