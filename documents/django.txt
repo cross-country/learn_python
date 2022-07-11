@@ -1,7 +1,27 @@
+Міграція - це програма, яка створює в базі даних всі описані в моделі структури: таблицю, поля, індекси, правила та зв'язки.
+
 python3 -m pip install Django	Встановити Django
 pip install Django				Встановити Django
 
-django-admin --version			версія django
-django-admin startproject <name>	створити новий проект django
+django-admin --version			версія Django
+django-admin startproject <name>	створити новий проект Django
 python3 manage.py runserver		
-python3 manage.py startapp <app_name> 	створити новий додаток  
+python3 manage.py startapp <app_name> 	створити новий додаток
+python3 manage.py makemigrations <app>	генерує міграції для всіх моделей в додатку  
+-//- sqlmigrate <app> <table>(ex: 0001)	показує SQL код таблиці
+-//- migrate				генерує всі міграції(і службові) фреймворку django
+-//- shell				запускає консоль Django(своя редакція консолі Python)
+-//- createsuperuser			створює суперкористувача
+
+	Команди Django(Python) console:
+>>> from <app>.models import <class>	імпортуємо клас(модель) із models.py
+>>> <obj>.save()			зберігає екземпляр класу
+>>> <obj>.pk
+>>> <class>.objets.create(key='value', ...) створює і зберігає екземпляр класу, та повертає результат
+>>> <class>.objets.all()		повертає список всіх об'єктів(записів таблиці)
+>>> <class>.objets.order_by('<attr>')	повертає відсортований список об'єктів за параметром
+>>> <class>.objets.filter(key='value')	повертає відфілтрований список об'єктів за параметром	
+>>> <class>.objets.get(pk=2)		повертає один об'єкт за параметром
+>>> <object>.delete()			видаляє об'єкт
+>>> exit()				вихід із консолі
+
