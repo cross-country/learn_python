@@ -9,7 +9,7 @@ python3 manage.py runserver
 python3 manage.py startapp <app_name> 	створити новий додаток
 python3 manage.py makemigrations <app>	генерує міграції для всіх моделей в додатку  
 -//- sqlmigrate <app> <table>(ex: 0001)	показує SQL код таблиці
--//- migrate				генерує всі міграції(і службові) фреймворку django
+-//- migrate				виконує всі міграції(і службові) фреймворку django
 -//- shell				запускає консоль Django(своя редакція консолі Python)
 -//- createsuperuser			створює суперкористувача
 
