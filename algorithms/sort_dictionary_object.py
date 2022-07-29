@@ -1,12 +1,12 @@
 import math
-class SortDictionary:
+class Dictionary:
     """
     #strings of documentation
     """
     def __init__(self, adict):
         self.dict = adict
 
-    def dict_sort(self, reverse=False, sort='key'):
+    def sort(self, reverse=False, sort='key'):
         """
         #dict_sort(reverse=False(True), sort='key(value)'
         #method sorts dictionary object by key or by value
@@ -81,6 +81,6 @@ class SortDictionary:
         f.close()
 
 asd = {'white': 300, 5: 30, 6: 'come', 'друг': 200, 'вокруг': 600, 2: 'begin'}
-p = SortDictionary(asd)
-p.dict_sort(sort="value", reverse=False)
+p = Dictionary(asd)
+p.sort(sort="value", reverse=False)
 print(p.tableview())
